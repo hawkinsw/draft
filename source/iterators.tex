@@ -4056,10 +4056,12 @@ constexpr Iterator base() const &;
 
 \begin{itemdescr}
 \pnum
-\constraints \tcode{Iterator} satisfies \tcode{CopyConstructible}.
+\constraints \tcode{Iterator} satisfies
+the \oldconcept{CopyConstructible} requirements.
 
 \pnum
-\effects \tcode{Iterator} models \tcode{CopyConstructible}.
+\effects \tcode{Iterator} models
+the \oldconcept{CopyConstructible} requirements.
 
 \pnum
 \returns \tcode{current}.
@@ -4969,7 +4971,7 @@ namespace std {
       requires Assignable<I&, const I2&>
         constexpr counted_iterator& operator=(const counted_iterator<I2>& x);
 
-    constexpr I base() const & requires CopyConstructible<I>;;
+    constexpr I base() const & requires CopyConstructible<I>;
     constexpr I base() &&;
     constexpr iter_difference_t<I> count() const noexcept;
     constexpr decltype(auto) operator*();
