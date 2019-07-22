@@ -15286,7 +15286,7 @@ In the text that follows:
   of type \tcode{FD} initialized with
   the \grammarterm{initializer} \tcode{(std::forward<F>(\brk{}f))}\iref{dcl.init},
 \item \tcode{BoundArgs} is a pack
-  that denotes \tcode{std::unwrap_ref_decay_t<Args>...},
+  that denotes \tcode{decay_t<Args>...},
 \item \tcode{bound_args} is
   a pack of bound argument entities of \tcode{g}\iref{func.def}
   of types \tcode{BoundArgs...},
