@@ -3252,7 +3252,7 @@ static consteval source_location current() noexcept;
   a (possibly parenthesized) \grammarterm{id-expression} naming \tcode{current},
   returns a \tcode{source_location} with an implementation-defined value.
   The value should be affected by \tcode{\#line}\iref{cpp.line}
-  in the same manner as for \tcode{__LINE__} and \tcode{__FILE__}.
+  in the same manner as for \mname{LINE} and \mname{FILE}.
   The values of the exposition-only data members
   of the returned \tcode{source_location} object
   are indicated in \tref{support.srcloc.current}.
@@ -3276,7 +3276,7 @@ static consteval source_location current() noexcept;
   \\ \rowsep
 \tcode{function_name_} &
   A name of the current function
-  such as in \tcode{__func__}\iref{dcl.fct.def.general} if any,
+  such as in \mname{func}\iref{dcl.fct.def.general} if any,
   an empty string otherwise. \\
 \end{libefftabvalue}
 
