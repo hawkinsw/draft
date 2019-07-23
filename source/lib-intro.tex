@@ -1546,8 +1546,10 @@ The entities in the \Cpp{} standard library are defined in headers,
 whose contents are made available to a translation unit when it contains the appropriate
 \indextext{unit!translation}%
 \tcode{\#include}
-preprocessing directive\iref{cpp.include}.%
+preprocessing directive\iref{cpp.include}%
 \indextext{\idxcode{\#include}}%
+or the appropriate \tcode{import} declaration\iref{module.import}.
+\indextext{\idxcode{import}}%
 \indextext{source file}
 
 \pnum
@@ -1569,9 +1571,30 @@ current definition of
 \pnum
 A translation unit shall include a header only outside of any
 \indextext{unit!translation}%
-declaration or definition, and shall include the header lexically
+declaration or definition and,
+in the case of a module unit,
+only in its \grammarterm{global-module-fragment}, and
+shall include the header or import the corresponding header unit lexically
 before the first reference in that translation unit to any of the entities
 declared in that header. No diagnostic is required.
+
+\pnum
+The headers listed in Table~\tref{headers.cpp}, or,
+for a freestanding implementation,
+the subset of such headers that are provided by the implementation,
+are collectively known as
+the \defnadj{importable}{\Cpp{} library headers}.
+\begin{note}
+Importable \Cpp{} library headers can be
+imported as module units\iref{module.import}.
+\end{note}
+
+\begin{example}
+\begin{codeblock}
+import <vector>;               // imports the <vector> header unit
+std::vector<int> vi;           // OK
+\end{codeblock}
+\end{example}
 
 \rSec3[using.linkage]{Linkage}
 
