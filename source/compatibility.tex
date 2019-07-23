@@ -2150,7 +2150,7 @@ Overload resolution for ostream inserters used with UTF-8 literals.
 Required for new features.
 \effect
 Valid ISO \CppXVII{} code that passes UTF-8 literals to
-\tcode{basic_ostream<char, ...>::\brk{}operator<<} or
+\tcode{basic_ostream<char, ...>::operator<<} or
 \tcode{basic_ostream<wchar_t, ...>::operator<<} is now ill-formed.
 \begin{codeblock}
 std::cout << u8"text";          // previously called \tcode{operator<<(const char*)} and printed a string;
