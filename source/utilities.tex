@@ -6597,7 +6597,8 @@ namespace std {
   template<class T, class Alloc, class... Args>
     constexpr T make_obj_using_allocator(const Alloc& alloc, Args&&... args);
   template<class T, class Alloc, class... Args>
-    constexpr T* uninitialized_construct_using_allocator(T* p, const Alloc& alloc, Args&&... args);
+    constexpr T* uninitialized_construct_using_allocator(T* p, const Alloc& alloc,
+                                                         Args&&... args);
 
   // \ref{allocator.traits}, allocator traits
   template<class Alloc> struct allocator_traits;
