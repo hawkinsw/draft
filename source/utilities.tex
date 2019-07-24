@@ -17646,7 +17646,7 @@ not possibly cv-qualified versions of the same type,
 \tcode{template<class T, class U>}\br
  \tcode{struct is_layout_compatible;}                 &
  \tcode{T} and \tcode{U} are layout-compatible\iref{basic.types}    &
- \tcode{T} and \tcode{U} are complete types,
+ \tcode{T} and \tcode{U} shall be complete types,
  \cv{}~\tcode{void},
  or arrays of unknown bound.                \\ \rowsep
 
@@ -17663,7 +17663,7 @@ not possibly cv-qualified versions of the same type,
  without regard to \cv{}-qualifiers.   &
  If \tcode{Base} and \tcode{Derived} are non-union class types
  and are not (possibly \cv{}-qualified) versions of the same type,
- \tcode{Derived} is a complete type.  \\ \rowsep
+ \tcode{Derived} shall be a complete type.  \\ \rowsep
 
 \indexlibrary{\idxcode{is_invocable}}%
 \tcode{template<class Fn, class... ArgTypes>}\br
