@@ -594,8 +594,10 @@ namespace std {
     [[nodiscard]] bool stop_requested() const noexcept;
     bool request_stop() noexcept;
 
-    [[nodiscard]] friend bool operator==(const stop_source& lhs, const stop_source& rhs) noexcept;
-    [[nodiscard]] friend bool operator!=(const stop_source& lhs, const stop_source& rhs) noexcept;
+    [[nodiscard]] friend bool
+    operator==(const stop_source& lhs, const stop_source& rhs) noexcept;
+    [[nodiscard]] friend bool
+    operator!=(const stop_source& lhs, const stop_source& rhs) noexcept;
     friend void swap(stop_source& lhs, stop_source& rhs) noexcept;
   };
 }
