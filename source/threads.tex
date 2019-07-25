@@ -776,7 +776,7 @@ If the request was made,
 the callbacks registered by associated \tcode{stop_callback} objects
 are synchronously called.
 If an invocation of a callback exits via an exception
-then \tcode{terminate()} is called\iref{except.terminate}.
+then \tcode{terminate} is called\iref{except.terminate}.
 \begin{note}
 A stop request includes notifying all condition variables
 of type \tcode{condition_variable_any}
@@ -924,7 +924,7 @@ on an associated \tcode{stop_source}.
 If evaluating
 \tcode{static_cast<Callback\&\&>(callback)()}
 exits via an exception,
-then \tcode{terminate()} is called\iref{except.terminate}.
+then \tcode{terminate} is called\iref{except.terminate}.
 
 \pnum
 \throws Any exception thrown by the initialization of \tcode{callback}.
@@ -1537,7 +1537,7 @@ This implies that any exceptions not thrown from the invocation of the copy
 of \tcode{f} will be thrown in the constructing thread, not the new thread.
 \end{note}
 If the \placeholdernc{INVOKE} expression exits via an exception,
-\tcode{terminate()} is called.
+\tcode{terminate} is called.
 
 \pnum
 \sync The completion of the invocation of the constructor
@@ -4694,7 +4694,7 @@ The returned value indicates whether the predicate evaluated to
 \pnum
 \remarks
 If the function fails to meet the postcondition,
-\tcode{terminate()} is called\iref{except.terminate}.
+\tcode{terminate} is called\iref{except.terminate}.
 \begin{note}
 This can happen if the re-locking of the mutex throws an exception.
 \end{note}
@@ -4746,7 +4746,7 @@ regardless of whether the timeout was triggered or a stop request was made.
 \pnum
 \remarks
 If the function fails to meet the postcondition,
-\tcode{terminate()} is called\iref{except.terminate}.
+\tcode{terminate} is called\iref{except.terminate}.
 \begin{note}
 This can happen if the re-locking of the mutex throws an exception.
 \end{note}
