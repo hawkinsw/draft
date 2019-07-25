@@ -1487,7 +1487,7 @@ template<class F, class... Args> explicit jthread(F&& f, Args&&... args);
 \begin{itemdescr}
 \pnum
 \requires
-\tcode{F} and each $\tcode{T}_i$ in \tcode{Args} shall satisfy the
+\tcode{F} and each $\tcode{T}_i$ in \tcode{Args} shall meet the
 \oldconcept{MoveConstructible} requirements.
 \tcode{%
         \placeholdernc{INVOKE}(\brk{}%
