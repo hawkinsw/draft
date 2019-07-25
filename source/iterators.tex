@@ -4056,12 +4056,10 @@ constexpr Iterator base() const &;
 
 \begin{itemdescr}
 \pnum
-\constraints \tcode{Iterator} satisfies
-the \oldconcept{CopyConstructible} requirements.
+\constraints \tcode{Iterator} satisfies \libconcept{CopyConstructible}.
 
 \pnum
-\effects \tcode{Iterator} models
-the \oldconcept{CopyConstructible} requirements.
+\expects \tcode{Iterator} models \libconcept{CopyConstructible}.
 
 \pnum
 \returns \tcode{current}.
