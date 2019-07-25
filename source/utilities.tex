@@ -14079,8 +14079,8 @@ if the types of their corresponding state entities are the same.
 \indexlibrary{invoke@\tcode{\placeholder{INVOKE}}}%
 \begin{itemdecl}
 template<class F, class... Args>
-  invoke_result_t<F, Args...> invoke(F&& f, Args&&... args)
-    constexpr noexcept(is_nothrow_invocable_v<F, Args...>);
+  constexpr invoke_result_t<F, Args...> invoke(F&& f, Args&&... args)
+    noexcept(is_nothrow_invocable_v<F, Args...>);
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -15400,7 +15400,7 @@ In the text that follows:
 \item $\tcode{t}_i$ is the $i^\text{th}$ argument in the function parameter pack \tcode{bound_args},
 \item $\tcode{td}_i$ is a bound argument entity
   of \tcode{g}\iref{func.def} of type $\tcode{TD}_i$
-  direct-non-list-initialized with 
+  direct-non-list-initialized with
   \tcode{std::forward<\brk{}$\tcode{T}_i$>($\tcode{t}_i$)},
 \item $\tcode{U}_j$ is the $j^\text{th}$ deduced type of the \tcode{UnBoundArgs\&\&...} parameter
   of the argument forwarding call wrapper, and
