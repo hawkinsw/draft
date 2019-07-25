@@ -1333,6 +1333,23 @@ for any of these C headers:
 \end{multicolfloattable}
 
 \pnum
+The headers listed in \tref{headers.cpp}, or,
+for a freestanding implementation,
+the subset of such headers that are provided by the implementation,
+are collectively known as
+the \defnadj{importable}{\Cpp{} library headers}.
+\begin{note}
+Importable \Cpp{} library headers can be
+imported as module units\iref{module.import}.
+\end{note}
+\begin{example}
+\begin{codeblock}
+import <vector>;               // imports the <vector> header unit
+std::vector<int> vi;           // OK
+\end{codeblock}
+\end{example}
+
+\pnum
 Except as noted in \ref{library} through \ref{\lastlibchapter}
 and \ref{depr}, the contents of each header \tcode{c\placeholder{name}} is
 the same as that of the corresponding header \tcode{\placeholder{name}.h} as
@@ -1577,24 +1594,6 @@ only in its \grammarterm{global-module-fragment}, and
 shall include the header or import the corresponding header unit lexically
 before the first reference in that translation unit to any of the entities
 declared in that header. No diagnostic is required.
-
-\pnum
-The headers listed in Table~\tref{headers.cpp}, or,
-for a freestanding implementation,
-the subset of such headers that are provided by the implementation,
-are collectively known as
-the \defnadj{importable}{\Cpp{} library headers}.
-\begin{note}
-Importable \Cpp{} library headers can be
-imported as module units\iref{module.import}.
-\end{note}
-
-\begin{example}
-\begin{codeblock}
-import <vector>;               // imports the <vector> header unit
-std::vector<int> vi;           // OK
-\end{codeblock}
-\end{example}
 
 \rSec3[using.linkage]{Linkage}
 
