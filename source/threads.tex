@@ -1507,15 +1507,15 @@ The new thread of execution executes
                 \placeholdernc{INVOKE}(\brk{}%
                 \placeholdernc{decay-copy}(\brk{}%
                 std::forward<F>(f)),
-                ssource.get_token(),
+                get_stop_token(),
                 \placeholdernc{decay-copy}(\brk{}%
-                std::forward<Args>(\brk{}args))...)}
+                std::forward\brk{}<Args>(\brk{}args))...)}
 if that expression is well-formed,
 otherwise
         \tcode{%
                 \placeholdernc{INVOKE}(\brk{}%
                 \placeholdernc{decay-copy}(\brk{}%
-                std::forward<F>(f)),
+                std::forward\brk{}<F>\brk{}(f)),
                 \placeholdernc{decay-copy}(\brk{}%
                 std::forward<Args>(\brk{}args))...)}
 with the calls to
