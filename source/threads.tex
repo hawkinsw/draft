@@ -289,7 +289,7 @@ implement semantics of shared ownership of a \defn{stop state}.
 Any \tcode{stop_source}, \tcode{stop_token}, or \tcode{stop_callback}
 that shares ownership of the same stop state is an \defn{associated}
 \tcode{stop_source}, \tcode{stop_token}, or \tcode{stop_callback}, respectively.
-The last remaining owner of the stop state automatically 
+The last remaining owner of the stop state automatically
 releases the resources associated with the stop state.
 
 \pnum
@@ -311,7 +311,7 @@ a stop request is first made by any associated \tcode{stop_source} object.
 \pnum
 Calls to the functions \tcode{request_stop}, \tcode{stop_requested},
 and \tcode{stop_possible}
-do not introduce data races. 
+do not introduce data races.
 A call to \tcode{request_stop} that returns \tcode{true}
 synchronizes with a call to \tcode{stop_requested}
 on an associated \tcode{stop_token} or \tcode{stop_source} object
@@ -355,7 +355,7 @@ using an associated \tcode{stop_source} object (\ref{stopsource}).
 A \tcode{stop_token} can also be passed to a
 \tcode{stop_callback}\iref{stopcallback} constructor
 to register a callback to be called when a stop request has been made
-from an associated \tcode{stop_source}. 
+from an associated \tcode{stop_source}.
 
 \begin{codeblock}
 namespace std {
@@ -393,7 +393,7 @@ stop_token() noexcept;
 \begin{itemdescr}
 \pnum
 \ensures
-\tcode{stop_possible()} is \tcode{false} and 
+\tcode{stop_possible()} is \tcode{false} and
 \tcode{stop_requested()} is \tcode{false}.
 \begin{note}
 Because the created \tcode{stop_token} object can never receive a stop request,
@@ -773,7 +773,7 @@ atomic read-modify-write operation\iref{intro.races}.
 If the request was made,
 the callbacks registered by associated \tcode{stop_callback} objects
 are synchronously called.
-If an invocation of a callback exits via an exception 
+If an invocation of a callback exits via an exception
 then \tcode{terminate()} is called\iref{except.terminate}.
 \begin{note}
 A stop request includes notifying all condition variables
@@ -919,7 +919,7 @@ on an associated \tcode{stop_source}.
 
 \pnum
 \remarks
-If evaluating 
+If evaluating
 \tcode{static_cast<Callback\&\&>(callback)()}
 exits via an exception,
 then \tcode{terminate()} is called\iref{except.terminate}.
@@ -937,7 +937,7 @@ then \tcode{terminate()} is called\iref{except.terminate}.
 \begin{itemdescr}
 \pnum
 \effects
-Unregisters the callback from the owned stop state, if any. 
+Unregisters the callback from the owned stop state, if any.
 The destructor does not block waiting for the execution of another callback
 registered by an associated \tcode{stop_callback}.
 If \tcode{callback} is concurrently executing on another thread,
@@ -1451,7 +1451,7 @@ namespace std {
     friend void swap(jthread& lhs, jthread& rhs) noexcept;
     // static members
     [[nodiscard]] static unsigned int hardware_concurrency() noexcept;
-  
+
   private:
     stop_source ssource;        // \expos
   };
@@ -4656,7 +4656,7 @@ return wait_until(lock, chrono::steady_clock::now() + rel_time, std::move(pred))
 The following wait functions will be notified
 when there is a stop request on the passed \tcode{stop_token}.
 In that case the functions return immediately,
-returning \tcode{false} if the predicate evaluates to \tcode{false}. 
+returning \tcode{false} if the predicate evaluates to \tcode{false}.
 
 \begin{itemdecl}
 template<class Lock, class Predicate>
@@ -4727,7 +4727,7 @@ return pred();
 
 \pnum
 \begin{note}
-There is no blocking if \tcode{pred()} is initially \tcode{true}, 
+There is no blocking if \tcode{pred()} is initially \tcode{true},
 \tcode{stoken.stop_requested()} was already \tcode{true}
 or the timeout has already expired.
 \end{note}
@@ -4750,7 +4750,7 @@ This can happen if the re-locking of the mutex throws an exception.
 \end{note}
 
 \pnum
-\throws 
+\throws
 Timeout-related exceptions \iref{thread.req.timing},
 or any exception thrown by \tcode{pred}.
 \end{itemdescr}
