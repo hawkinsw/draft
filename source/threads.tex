@@ -1489,21 +1489,10 @@ template<class F, class... Args> explicit jthread(F&& f, Args&&... args);
 \requires
 \tcode{F} and each $\tcode{T}_i$ in \tcode{Args} shall meet the
 \oldconcept{MoveConstructible} requirements.
-\tcode{%
-        \placeholdernc{INVOKE}(\brk{}%
-        \placeholdernc{decay-copy}(\brk{}%
-        std::forward<F>(f)),
-        ssource.get_token(),
-        \placeholdernc{decay-copy}(\brk{}%
-        std::forward<Args>(\brk{}args))...)}
+Either
+\tcode{is_invocable_v<decay_t<F>, stop_token, decay_t<Args>...>} is true,
 or
-\tcode{%
-        \placeholdernc{INVOKE}(\brk{}%
-        \placeholdernc{decay-copy}(\brk{}%
-        std::forward<F>(f)),
-        \placeholdernc{decay-copy}(\brk{}%
-        std::forward<Args>(\brk{}args))...)}
-\iref{func.require} are valid expressions.
+\tcode{is_invocable_v<decay_t<F>, decay_t<Args>...>} is true.
 
 \pnum
 \constraints
