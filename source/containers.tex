@@ -3164,7 +3164,7 @@ namespace std {
   template<class T, size_t N>
     constexpr void swap(array<T, N>& x, array<T, N>& y) noexcept(noexcept(x.swap(y)));
 
-  // \ref{array.creation}, Array creation functions
+  // \ref{array.creation}, class template \tcode{array} creation functions
   template<class T, size_t N>
     constexpr array<remove_cv_t<T>, N> to_array(T (&a)[N]);
   template<class T, size_t N>
@@ -3601,7 +3601,7 @@ template<class T, size_t N>
 \pnum
 \mandates
 \tcode{is_array_v<T>} is \tcode{false} and
-\tcode{is_move_constructible_v<T, T\&>} is \tcode{true}.
+\tcode{is_move_constructible_v<T>} is \tcode{true}.
 
 \pnum
 \expects
@@ -3609,28 +3609,6 @@ template<class T, size_t N>
 
 \pnum
 \returns \tcode{\{\{ std::move(a[0]), $\dotsc$, std::move(a[N - 1]) \}\}}.
-\end{itemdescr}
-
-
-\indextext{\idxcode{array}!creation}%
-
-\begin{itemdecl}
-template<class T, size_t N>
-  constexpr array<remove_cv_t<T>, N> to_array(T (&a)[N]);
-\end{itemdecl}
-
-\begin{itemdescr}
-\pnum
-\mandates
-\tcode{is_array_v<T>} is \tcode{false} and
-\tcode{is_constructible_v<T, T\&>} is \tcode{true}.
-
-\pnum
-\expects
-\tcode{T} meets the \oldconcept{CopyConstructible} requirements.
-
-\pnum
-\returns \tcode{\{\{ a[0], ..., a[N - 1] \}\}}.
 \end{itemdescr}
 
 \rSec3[array.tuple]{Tuple interface}
