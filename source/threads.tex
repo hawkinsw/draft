@@ -908,21 +908,21 @@ explicit stop_callback(stop_token&& st, C&& cb)
 
 \pnum
 \effects
-Initializes \tcode{callback} with \tcode{static_cast<C\&\&>(cb)}.
-If \tcode{st.stop_requested()} is \tcode{true},
-\tcode{static_cast<Callback\&\&>(callback)()}
+Initializes \tcode{callback} with \tcode{std::forward<C>(cb)}.
+If \tcode{st.stop_requested()} is \tcode{true}, then
+\tcode{std::forward<Callback>(callback)()}
 is evaluated in the current thread before the constructor returns.
 Otherwise, if \tcode{st} has ownership of a stop state,
 acquires shared ownership of that stop state and registers
 the callback with that stop state
-such that \tcode{static_cast<Callback\&\&>(callback)()}
+such that \tcode{std::forward<Callback>(callback)()}
 is evaluated by the first call to \tcode{request_stop()}
 on an associated \tcode{stop_source}.
 
 \pnum
 \remarks
 If evaluating
-\tcode{static_cast<Callback\&\&>(callback)()}
+\tcode{std::forward<Callback>(callback)()}
 exits via an exception,
 then \tcode{terminate} is called\iref{except.terminate}.
 
