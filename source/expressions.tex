@@ -4906,7 +4906,19 @@ the global scope.
 An implementation is allowed to omit a call to a replaceable global allocation
 function~(\ref{new.delete.single}, \ref{new.delete.array}). When it does so,
 the storage is instead provided by the implementation or provided by extending
-the allocation of another \grammarterm{new-expression}. The implementation may
+the allocation of another \grammarterm{new-expression}.
+
+\pnum
+During an evaluation of a constant expression,
+a call to an allocation function is always omitted.
+\begin{note}
+Only \grammarterm{new-expression}{s} that would otherwise result in
+a call to a replaceable global allocation function
+can be evaluated in constant expressions (see \ref{expr.const}).
+\end{note}
+
+\pnum
+The implementation may
 extend the allocation of a \grammarterm{new-expression} \tcode{e1} to provide
 storage for a \grammarterm{new-expression} \tcode{e2} if the
 following would be true were the allocation not extended:
@@ -6958,9 +6970,6 @@ a conversion from type \cv{}~\tcode{void*} to a pointer-to-object type;
 a \tcode{reinterpret_cast}\iref{expr.reinterpret.cast};
 
 \item
-a pseudo-destructor call\iref{expr.prim.id.dtor};
-
-\item
 modification of an object~(\ref{expr.ass}, \ref{expr.post.incr},
 \ref{expr.pre.incr})
 unless it is applied to a non-volatile lvalue of literal type
@@ -6968,10 +6977,27 @@ that refers to a non-volatile object
 whose lifetime began within the evaluation of \tcode{e};
 
 \item
-a \grammarterm{new-expression}\iref{expr.new};
+a \grammarterm{new-expression}\iref{expr.new},
+unless the selected allocation function is
+a replaceable global allocation function~(\ref{new.delete.single},
+\ref{new.delete.array} and
+the allocated storage is deallocated within the evaluation of \tcode{e};
 
 \item
-a \grammarterm{delete-expression}\iref{expr.delete};
+a \grammarterm{delete-expression}\iref{expr.delete}
+unless it deallocates a region of storage
+allocated within the evaluation of \tcode{e};
+
+\item
+a call to an instance of
+\tcode{std::allocator<T>::allocate}\iref{allocator.members},
+unless the allocated storage is deallocated within the evaluation of \tcode{e};
+
+\item
+a call to an instance of
+\tcode{std::allocator<T>::deallocate}\iref{allocator.members},
+unless it deallocates a region of storage
+allocated within the evaluation of \tcode{e};
 
 \item
 an \grammarterm{await-expression}\iref{expr.await};
