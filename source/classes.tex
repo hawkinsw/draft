@@ -2120,8 +2120,12 @@ same class as the \grammarterm{nested-name-specifier}.
 
 A destructor shall take no arguments\iref{dcl.fct}.
 Each \grammarterm{decl-specifier} of the \grammarterm{decl-specifier-seq}
-of a destructor declaration (if any) shall be \tcode{friend}, \tcode{inline}, or
-\tcode{virtual}.
+of a destructor declaration (if any) shall be
+\tcode{friend},
+\tcode{inline},
+\tcode{virtual},
+\tcode{constexpr}, or
+\tcode{consteval}.
 
 \pnum
 \indextext{restriction!destructor}%
@@ -2202,6 +2206,13 @@ Before the
 defaulted destructor for a class is implicitly defined, all the non-user-provided
 destructors for its base classes and its non-static data members shall have been
 implicitly defined.
+
+\pnum
+The defaulted destructor is a constexpr destructor
+if it satisfies the requirements for a constexpr destructor\iref{dcl.constexpr}.
+\begin{note}
+In particular, a trivial destructor is a constexpr destructor.
+\end{note}
 
 \pnum
 \indextext{order of execution!destructor}%

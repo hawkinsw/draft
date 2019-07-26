@@ -6842,26 +6842,22 @@ machine\iref{intro.execution}, would evaluate one of the following expressions:
 \begin{itemize}
 \item
 \tcode{this}\iref{expr.prim.this}, except in a constexpr
-function or a constexpr constructor that is being evaluated as part
+function\iref{dcl.constexpr} that is being evaluated as part
 of \tcode{e};
 
 \item
-an invocation of a function other than
-a constexpr constructor for a literal class,
-a constexpr function,
-or an implicit invocation of a trivial destructor\iref{class.dtor}
+an invocation of a non-constexpr function
 \begin{note} Overload resolution\iref{over.match}
-is applied as usual \end{note};
+is applied as usual.
+\end{note};
 
 \item
-an invocation of an undefined constexpr function or an
-undefined constexpr constructor;
+an invocation of an undefined constexpr function;
 
 \item
-an invocation of an instantiated constexpr function or
-constexpr constructor that fails to satisfy the requirements
-for a constexpr function or
-constexpr constructor\iref{dcl.constexpr};
+an invocation of an instantiated constexpr function
+that fails to satisfy the requirements
+for a constexpr function;
 
 \item
 an expression that would exceed the implementation-defined
@@ -7042,6 +7038,21 @@ constexpr int y = h(1);             // OK: initializes \tcode{y} with the value 
                                     // the lifetime of \tcode{k} begins inside \tcode{h(1)}
 \end{codeblock}
 \end{example}
+
+\pnum
+An object \tcode{a} is said to have \defnadj{constant}{destruction} if:
+\begin{itemize}
+\item
+  it is not of class type nor (possibly multi-dimensional) array thereof, or
+\item
+  it is of class type or (possibly multi-dimensional) array thereof,
+  that class type has a constexpr destructor, and
+  for a hypothetical expression \tcode{e}
+  whose only effect is to destroy \tcode{a},
+  \tcode{e} would be a core constant expression
+  if the lifetime of \tcode{a} and its non-mutable subobjects
+  (but not its mutable subobjects) were considered to start within \tcode{e}.
+\end{itemize}
 
 \pnum
 An \defnadj{integral constant}{expression}
